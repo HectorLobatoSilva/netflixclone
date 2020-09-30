@@ -12,4 +12,22 @@ const app = firebase.initializeApp({
 
 })
 
+export interface UserStateInterface {
+    useremail: string;
+    password: string;
+    passwordRepeated?: string;
+}
+
+export const FirebaseAddUser = ( user: UserStateInterface ) => {
+    const { useremail, password, passwordRepeated } = user
+    if( password === passwordRepeated ) {
+        app.auth().createUserWithEmailAndPassword( useremail, password ).then( user => app.auth().signInWithEmailAndPassword( useremail, password ) ).catch( error => "Can not create user" )
+    }
+}
+
+export const FirebaseSignIn = ( user: UserStateInterface  ) => {
+    const { useremail, password } = user
+    app.auth().signInWithEmailAndPassword( useremail, password ).then( user => console.log("user loged in", user) ).catch( error => console.log("There is an error", error) )
+}
+
 export default app
