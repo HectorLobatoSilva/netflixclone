@@ -21,8 +21,6 @@ const SignIn: FunctionComponent< { history: History } > = ( { history } ) => {
     const classes = useStyle()
     const [ userState, setUserState ] = useState<UserStateInterface>(INITIAL_STATE)
     const [ error, setError ] = useState<string>("")
-
-    const { currentUser } = useContext( AuthContext )
     
     const onChange = ( event: React.ChangeEvent<HTMLInputElement> ) =>  {
         setUserState({...userState, [event.target.name]: event.target.value})
