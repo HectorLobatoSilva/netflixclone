@@ -6,7 +6,8 @@ import StarBorderIcon from '@material-ui/icons/StarBorder';
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 345,
+        width: 345,
+        border: "1px solid #646464"
     },
     media: {
         height: 0,
@@ -23,7 +24,7 @@ const useStyles = makeStyles({
     text: {
         WebkitBoxOrient: "vertical",
         display: "-webkit-box",
-        WebkitLineClamp: 3,
+        WebkitLineClamp: 2,
         textOverflow: "ellipsis",
         whiteSpace: "normal",
         overflow: "hidden"
@@ -52,7 +53,7 @@ const MovieCard: FunctionComponent<ICard> = ( { movie } ) => {
     return (
         <Card className = { classes.root } >
             <CardMedia className = { classes.media } image = { imageUrl } />
-            <CardContent >
+            <CardContent style = { { backgroundColor: "#303030", color: "#FFFFFF" } } >
                 <div className = { classes.title } >
                     <Typography variant = "body1" component = "p" style = { { fontWeight: "bold", WebkitLineClamp: 1 } } className = { classes.text }  > { movie.title }</Typography>
                     <Typography variant = "body1" component = "p" style = { { WebkitLineClamp: 1 } } className = { classes.text } > { parseDate(movie.release_date) }</Typography>

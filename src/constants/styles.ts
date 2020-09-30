@@ -39,7 +39,14 @@ const useStyle = makeStyles({
     paper:{
         backgroundColor: "rgba(33,32,32,0.9)",
         color: "#FFFFFF",
-    }
+    },
+    netflixText:{
+        fontFamily: "oswald",
+        color: "#CF0B0B",
+        textShadow: "2px 2px #000000",
+        fontSize: 50,
+        letterSpacing: 5
+    },
 })
 
 export default useStyle

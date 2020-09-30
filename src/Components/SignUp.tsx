@@ -52,7 +52,8 @@ const SignUP: FunctionComponent< { history: History } > = ( { history } ) => {
     return (
         <div className = { classes.principal } >
             <div className = { classes.barContainer } >
-                <img src = {process.env.PUBLIC_URL + '/assets/logo.png'} className = { classes.logo } />
+                {/* <img src = {process.env.PUBLIC_URL + '/assets/logo.png'} className = { classes.logo } /> */}
+                <Typography className = { classes.netflixText } >MEMETFLIX</Typography>
                 <Link to = {SIGN_IN} > <Button className = { classes.button } variant = "contained" > Sign In </Button> </Link>
             </div>
             <Container>
