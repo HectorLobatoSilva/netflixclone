@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 const Browse: FunctionComponent< { history: History } > = ( { history } ) => {
     const classes = useStyles()
     const baseUrl = "https://api.themoviedb.org/3/movie/"
-    const token = "14d10c79b49581abba3239b6122dc1ca"
+    const token = ""
     const extra = "&language=en-US&page=1"
 
     const handleClick = () => {
