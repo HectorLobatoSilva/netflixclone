@@ -10,6 +10,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const useStyles = makeStyles({
     root: {
         display: 'flex',
+        position: "relative",
     },
     gridList: {
         flexWrap: 'nowrap',
@@ -18,8 +19,31 @@ const useStyles = makeStyles({
         overflow: "hidden",
         scrollBehavior: "smooth"
     },
-    iconButton: {
-        borderRadius: 0
+    iconButtonBack: {
+        borderRadius: 0,
+        backgroundColor: "rgba(0,0,0,0.7)",
+        color: "#FFFFFF",
+        position: "absolute",
+        height: "100%",
+        zIndex: 9,
+        top: 0,
+        left: 0,
+        "&:hover": {
+            backgroundColor: "rgba(0,0,0,0.5)",
+        }
+    },
+    iconButtonNext: {
+        borderRadius: 0,
+        backgroundColor: "rgba(0,0,0,0.7)",
+        color: "#FFFFFF",
+        position: "absolute",
+        height: "100%",
+        zIndex: 9,
+        top: 0,
+        right: 0,
+        "&:hover": {
+            backgroundColor: "rgba(0,0,0,0.5)",
+        }
     }
 })
 
@@ -342,7 +366,7 @@ const MovieRow: FunctionComponent<IMovieCard> = ( { url, title } ) => {
     //     const getPopularMovies = async () => {
     //         const fetchMovies = await ( await fetch( url ) ).json()
     //         setMovies(fetchMovies.results);
-    //         console.log(fetchMovies.results)
+    //         // console.log("movies",fetchMovies.results)
     //     }
     //     getPopularMovies()
     // }, [] )
@@ -358,10 +382,10 @@ const MovieRow: FunctionComponent<IMovieCard> = ( { url, title } ) => {
     }
 
     return (
-        <div>
+        <div style = { { marginTop: "3em" } } >
             <Typography > { title } </Typography>
             <div className = { classes.root } >
-                <IconButton className = { classes.iconButton } onClick = { handlePrevMovies } > <ArrowBackIosIcon /> </IconButton>
+                <IconButton className = { classes.iconButtonBack } onClick = { handlePrevMovies } > <ArrowBackIosIcon /> </IconButton>
                 <GridList className = { classes.gridList } cols = {5} id = { id } >
                     {
                         movies.map( ( movie, key: number ) => <GridListTile key = { key } style = { { height: "100%" } }>
@@ -369,7 +393,7 @@ const MovieRow: FunctionComponent<IMovieCard> = ( { url, title } ) => {
                         </GridListTile> )
                     }
                 </GridList>
-                <IconButton className = { classes.iconButton } onClick = { handleNextMovies } > <ArrowForwardIosIcon /> </IconButton>
+                <IconButton className = { classes.iconButtonNext } onClick = { handleNextMovies } > <ArrowForwardIosIcon /> </IconButton>
             </div>
         </div>
     )

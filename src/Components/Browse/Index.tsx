@@ -4,7 +4,6 @@ import { History } from 'history'
 import { withRouter } from 'react-router'
 
 import firebaseApp from './../../firebaseConfig'
-import { Card, CardMedia } from '@material-ui/core'
 import MovieRow from './MovieRow'
 
 const useStyles = makeStyles({
@@ -16,19 +15,20 @@ const useStyles = makeStyles({
 
 const Browse: FunctionComponent< { history: History } > = ( { history } ) => {
     const classes = useStyles()
-    const baseUrl = "https://api.themoviedb.org/3/movie/popular?api_key=14d10c79b49581abba3239b6122dc1ca&language=en-US&page=1"
-
-    console.log(process.env)
+    const baseUrl = "https://api.themoviedb.org/3/movie/"
+    const token = "14d10c79b49581abba3239b6122dc1ca"
+    const extra = "&language=en-US&page=1"
 
     const handleClick = () => {
         firebaseApp.auth().signOut()
     }
     return (
         <React.Fragment >
-            {/* <Card className = { classes.principal }>
-                <CardMedia component = "img" height = "100%" image = "" />
-            </Card> */}
-            <MovieRow url = "" title = "Most popular" />
+            {/* <MovieRow url = { `${baseUrl}latest?api_key=${token}${extra}` } title = "Lasted" /> */}
+            <MovieRow url = { `${baseUrl}now_playing?api_key=${token}${extra}` } title = "Now Playing" />
+            <MovieRow url = { `${baseUrl}popular?api_key=${token}${extra}` } title = "Popular" />
+            <MovieRow url = { `${baseUrl}top_rated?api_key=${token}${extra}` } title = "Top Rated" />
+            <MovieRow url = { `${baseUrl}upcoming?api_key=${token}${extra}` } title = "Upcoming" />
             <button onClick = {handleClick} >Sign out</button>
         </React.Fragment>
     )
