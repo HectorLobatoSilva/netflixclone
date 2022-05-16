@@ -1,29 +1,26 @@
-import React from 'react'
-import { AppBar, Toolbar, Button } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
+import React from "react";
+import { Button, Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
-    appbar: {
-        backgroundColor: "transparent"
-    },
-    login: {
-        backgroundColor: "#D50101",
-        color: "#FFFFFF",
-        "&:hover":{
-            backgroundColor: "#B51414"
-        }
-    }
-})
+import useStyle from "./../constants/styles";
 
-const MyNavBar = () => {
-    const classes = useStyles()
-    return (
-        <AppBar className = { classes.appbar } >
-            <Toolbar>
-                <Button className = { classes.login } > Login </Button>
-            </Toolbar>
-        </AppBar>
-    )
-}
+type Props = {
+  to: string;
+  label: string;
+};
 
-export default MyNavBar
+const MyNavBar = ({ to, label }: Props) => {
+  const classes = useStyle();
+  return (
+    <div className={classes.barContainer}>
+      <Typography className={classes.netflixText}>MEMETFLIX</Typography>
+      <Link to={to}>
+        <Button className={classes.button} variant="contained">
+          {label}
+        </Button>
+      </Link>
+    </div>
+  );
+};
+
+export default MyNavBar;

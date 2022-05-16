@@ -1,6 +1,5 @@
 import React, { useState, useCallback, FunctionComponent } from "react";
 import { Button, Container, Grid, Paper, Typography } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { History } from "history";
 
@@ -9,6 +8,7 @@ import useStyle from "./../constants/styles";
 import { SIGN_UP, BROWSE } from "./../constants/routes";
 
 import firebaseApp, { UserStateInterface } from "../firebaseConfig";
+import MyNavBar from "./NavBar";
 
 const INITIAL_STATE = {
   useremail: "",
@@ -40,23 +40,9 @@ const SignIn: FunctionComponent<{ history: History }> = ({ history }) => {
     [history, userState, error]
   );
 
-  // if ( currentUser ) {
-  //     return <Redirect to = {BROWSE} />
-  // }
-
   return (
     <div className={classes.principalSignIn}>
-      <div className={classes.barContainer}>
-        {/* <img src = {process.env.PUBLIC_URL + '/assets/logo.png'} className = { classes.logo } /> */}
-        <Typography className={classes.netflixText}>MEMETFLIX</Typography>
-        <Link to={SIGN_UP}>
-          {" "}
-          <Button className={classes.button} variant="contained">
-            {" "}
-            Sign Up{" "}
-          </Button>{" "}
-        </Link>
-      </div>
+      <MyNavBar to={SIGN_UP} label="sign up" />
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12}>
